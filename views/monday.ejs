@@ -1,0 +1,74 @@
+
+<%- include("partials/header.ejs") %>
+
+<h1 class="day">MONDAY</h1>
+
+<div class="center-main">
+
+    <div class="table">
+        <% locals.teams.forEach(team => { %>
+            <div class="t-teams">
+                <img href=<%= team.logo %>>
+                <div><%= team.name %></div>
+                <div><%= team.country %></div>
+            </div>
+        <% }); %>
+
+    </div>
+        
+    <form class="main">
+        
+      <div class="teamInputs">
+
+        <div class="teamOne">
+          <label class="team-name">TEAM---1</label>
+          <input type="text" name="name_team_one" class="t-name">
+          <label class="team-name">ODD</label>
+          <input type="text" name="odd_team_one" class="t-name">
+          <label class="team-name">TIME</label>
+          <input type="text" name="time_team_one" class="t-name">
+        </div>
+    
+        <div class="teamTwo">
+          <label class="team-name">TEAM---2</label>
+          <input type="text" name="name_team_two" class="t-name">
+          <label class="team-name">ODD</label>
+          <input type="text" name="odd_team_two" class="t-name">
+          <label class="team-name">TIME</label>
+          <input type="text" name="time_team_two" class="t-name">
+        </div>
+
+        <div class="teamThree">
+          <label class="team-name">TEAM---3</label>
+          <input type="text" name="name_team_three" class="t-name">
+          <label class="team-name">ODD</label>
+          <input type="text" name="odd_team_three" class="t-name">
+          <label class="team-name">TIME</label>
+          <input type="text" name="time_team_three" class="t-name">
+        </div>  
+
+        <div class="teamFour">
+          <label class="team-name">TEAM---4</label>
+          <input type="text" name="name_team_four" class="t-name">
+          <label class="team-name">ODD</label>
+          <input type="text" name="odd_team_four" class="t-name">
+          <label class="team-name">TIME</label>
+          <input type="text" name="time_team_four" class="t-name">
+        </div>
+        <input type="submit" class="submit-button" value="SUBMIT">
+        <button type="button" class="clear-button">CLEAR ALL</button>
+      </div>
+        
+        
+    </form>
+</div>
+
+
+
+ <!--
+
+    -->
+   
+
+
+<div class="message"><%= locals.message%></div> 
