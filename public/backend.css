@@ -12,6 +12,11 @@
     --subtitle: rgb(180, 135, 68);
 }
 
+@media(maxwidth:2000){
+    .center-main{
+        display: block;
+    }
+}
 
 #logo{
     font-family: var(--logo);
