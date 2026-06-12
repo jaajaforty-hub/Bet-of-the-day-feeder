@@ -47,12 +47,12 @@ const teams =[
 app.get("/",(req,res)=>{res.render("backend.ejs",{teams:teams})});
 app.get("/home",(req,res)=>{res.render("backend.ejs",{teams:teams})});
 app.get("/monday",(req,res)=>{res.render("monday.ejs",{teams:teams})});
-app.get("/tuesday",(req,res)=>{ res.render("tuesday.ejs")});
-app.get("/wednesday",(req,res)=>{res.render("wednesday.ejs")});
-app.get("/thurday",(req,res)=>{ res.render("thurday.ejs")});
-app.get("/friday",(req,res)=>{ res.render("friday.ejs")});
-app.get("/saturday",(req,res)=>{res.render("saturday.ejs")});
-app.get("/sunday",(req,res)=>{ res.render("sunday.ejs")});
+app.get("/tuesday",(req,res)=>{ res.render("tuesday.ejs",{teams:teams})});
+app.get("/wednesday",(req,res)=>{res.render("wednesday.ejs",{teams:teams})});
+app.get("/thurday",(req,res)=>{ res.render("thurday.ejs",{teams:teams})});
+app.get("/friday",(req,res)=>{ res.render("friday.ejs",{teams:teams})});
+app.get("/saturday",(req,res)=>{res.render("saturday.ejs",{teams:teams})});
+app.get("/sunday",(req,res)=>{ res.render("sunday.ejs",{teams:teams})});
 
 
 
@@ -61,9 +61,9 @@ app.post("/monday", async (req, res) => {
     try {
         
         const queryText = `
-            UPDATE monday 
-            SET team = $1, country = $2, odd = $3, times = $4, probability = $5 
-            WHERE id = $6`;
+        UPDATE monday 
+        SET team = $1, results = $2, odd = $3, times = $4, 
+        WHERE id = $5`;
 
         // Team 1 - Node will wait for this to finish...
         await db.query(queryText, [

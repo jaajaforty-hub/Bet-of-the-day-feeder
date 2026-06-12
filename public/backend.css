@@ -12,12 +12,6 @@
     --subtitle: rgb(180, 135, 68);
 }
 
-@media(maxwidth:2000){
-    .center-main{
-        display: block;
-    }
-}
-
 #logo{
     font-family: var(--logo);
     display: flex; 
@@ -48,6 +42,9 @@
   border-radius: 5px;
   padding: 8px;
 }
+.user:hover{
+    box-shadow: 2px 2px 2px 3px var(--darkgray);
+}
 .home{
   background-color: var(--accent-orange);
   color: var(--headings);
@@ -56,21 +53,39 @@
   text-decoration: none;
 
 }
-
+.home:hover{
+    box-shadow: 2px 2px 2px 3px var(--darkgray);
+}
+.day-title{
+    background-color: var(--headings);
+    width: 30vw;
+    height: 3vh;
+    text-align: center;
+    margin-left: 35vw;
+    margin-top: 5vh;
+    font-family: var(--headingf);
+    font-size: large;
+    padding-top: 10px;
+    color: var(--accent-orange);
+    border-radius: 5px;
+}
 .center-main{
     display: grid;
     grid-template-columns: 1fr 2fr ;
-    gap: 50px;
+    gap: 100px;
+    margin-left: 100px;
     margin-top: 80px;
     border-radius: 5px;
+    padding-bottom: 150px;
 }
 .table{
     display: block;
     overflow-y: auto;
     border-radius: 5px;
-    border: 5px solid var(--headings);
+    border: 2px solid var(--headings);
     border-radius: 15px;
     box-shadow: 1px 1px 10px 1px lightgray;
+    
 
 }
 .t-teams{
@@ -114,12 +129,13 @@
 
 
 .teamInputs{
-    display: inline-block;  
+    display: grid;
+    grid-template-columns: auto  auto;
     border-radius: 15px;
     font-family: var(--headingf); 
-    gap: 100px;
-    border: 5px solid var(--headings);
-   
+    gap: 1px;
+    border: 2px solid var(--headings);
+ 
     padding: 20px 50px 20px 0px;
     box-shadow: 0px 0px 10px 1px lightgray;
 }
@@ -131,19 +147,28 @@
 
 .teamInputs > div >*{
     margin-left: 30px;
+    margin-top: 10px;
+    display: block;
 }
 .teamInputs > div > input{
   width: 200px;
 }
 .submit-button,.clear-button{
-    margin-left: 250px; 
-    margin-top: 100px; 
+    margin-left: 150px; 
+    margin-top: 80px; 
     font-weight: 800; 
     height: 50px; 
     border: 5px solid var(--headings); 
     border-radius: 10px; 
-    color: var(--headings);
-    width: 200px;
+    color: var(--accent-orange);
+    width: 150px;
+    background-color: var(--headings);
+}
+.submit-button:hover{
+     box-shadow: 0px 0px 20px 10px var(--accent-orange);
+}
+.clear-button:hover{
+    box-shadow: 0px 0px 20px 10px var(--accent-orange);
 }
 .message{
     color: var(--accent-orange); 
