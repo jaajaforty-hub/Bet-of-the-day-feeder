@@ -80,18 +80,36 @@
 }
 .table{
     display: block;
-    overflow-y: auto;
+    overflow-y:scroll ;
+    overflow-x: hidden;
     border-radius: 5px;
     border: 2px solid var(--headings);
     border-radius: 15px;
-    box-shadow: 1px 1px 10px 1px lightgray;
-    
+    box-shadow: 1px 1px 10px 1px rgb(104, 103, 103);
+    height: 790px;
+ 
 
+}
+.team_heading{
+    margin: 50px 0px 50px 200px;
+    font-size: larger; 
+    font-family: var(--headingf);
+}
+.logo{
+    width: 40px;
+    height: 35px;
+    border-radius: 50%;
 }
 .t-teams{
     display: flex;
     justify-content: space-evenly;
+    margin-left: 25px;
     margin-top: 30px;
+    background-color: #e4dfdf;
+    width: 90%;
+    height: 40px;
+    align-items: center;
+    border-radius: 3px;
 }
 
 .main{
@@ -109,7 +127,7 @@
     grid-template-columns: repeat(auto-fit minmax(200px 1fr));
     gap: 20px;
     height: 60px;
-    box-shadow: 0px 0px 10px 0px var(--accent-orange);  
+    box-shadow: 10px 10px 10px 10px #b6ac99;  
     border-radius: 10px;
     border: 2px solid var(--headings);
     padding: 60px;  

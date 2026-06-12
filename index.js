@@ -19,30 +19,14 @@ const db = new Pool({
 app.use(express.static("public"));
 app.use(express.urlencoded({extended:true}));
 
-
-const teams =[
-{
-    name:"mary",
-    country:"usa"
-},{
-     name:"Fortunate",
-    country:"Canada"
-},
-{
-    name:"mary",
-    country:"usa"
-},{
-     name:"Fortunate",
-    country:"Canada"
-},
-{
-    name:"mary",
-    country:"usa"
-},{
-     name:"Fortunate",
-    country:"Canada"
+let teams = []
+async function getTable() {
+   const data  = await db.query('SELECT * FROM teams')
+   teams = data.rows 
+    
 }
-]
+getTable()
+
 
 app.get("/",(req,res)=>{res.render("backend.ejs",{teams:teams})});
 app.get("/home",(req,res)=>{res.render("backend.ejs",{teams:teams})});
@@ -67,28 +51,28 @@ app.post("/monday", async (req, res) => {
 
         // Team 1 - Node will wait for this to finish...
         await db.query(queryText, [
-            req.body.name_team_one, req.body.country_team_one, 
+            req.body.name_team_one, req.body.results-one, 
             req.body.odd_team_one, req.body.time_team_one, 
             req.body.prob_team_one, 1
         ]);
 
      
         await db.query(queryText, [
-            req.body.name_team_two, req.body.country_team_two, 
+            req.body.name_team_two, req.body.results-two, 
             req.body.odd_team_two, req.body.time_team_two, 
             req.body.prob_team_one, 2
         ]);
 
       
         await db.query(queryText, [
-            req.body.name_team_three, req.body.country_team_three, 
+            req.body.name_team_three, req.body.results-three, 
             req.body.odd_team_three, req.body.time_team_three, 
             req.body.prob_team_three, 3
         ]);
 
 
         await db.query(queryText, [
-            req.body.name_team_four, req.body.country_team_four, 
+            req.body.name_team_four, req.body.results-four, 
             req.body.odd_team_four, req.body.time_team_four, 
             req.body.prob_team_four, 4
         ]);
@@ -108,36 +92,38 @@ app.post("/tuesday", async (req, res) => {
     try {
         
         const queryText = `
-            UPDATE tuesday 
-            SET team = $1, country = $2, odd = $3, times = $4, probability = $5 
-            WHERE id = $6`;
+        UPDATE tuesday 
+        SET team = $1, results = $2, odd = $3, times = $4, 
+        WHERE id = $5`;
 
-
+        // Team 1 - Node will wait for this to finish...
         await db.query(queryText, [
-            req.body.name_team_one, req.body.country_team_one, 
+            req.body.name_team_one, req.body.results-one, 
             req.body.odd_team_one, req.body.time_team_one, 
             req.body.prob_team_one, 1
         ]);
 
      
         await db.query(queryText, [
-            req.body.name_team_two, req.body.country_team_two, 
+            req.body.name_team_two, req.body.results-two, 
             req.body.odd_team_two, req.body.time_team_two, 
             req.body.prob_team_one, 2
         ]);
 
       
         await db.query(queryText, [
-            req.body.name_team_three, req.body.country_team_three, 
+            req.body.name_team_three, req.body.results-three, 
             req.body.odd_team_three, req.body.time_team_three, 
             req.body.prob_team_three, 3
         ]);
 
+
         await db.query(queryText, [
-            req.body.name_team_four, req.body.country_team_four, 
+            req.body.name_team_four, req.body.results-four, 
             req.body.odd_team_four, req.body.time_team_four, 
             req.body.prob_team_four, 4
         ]);
+      
         let sucMessage = "Table uploading was successful."
         res.render("tuesday.ejs",{message:sucMessage});
         
@@ -153,36 +139,38 @@ app.post("/wednesday", async (req, res) => {
     try {
         
         const queryText = `
-            UPDATE wednesday 
-            SET team = $1, country = $2, odd = $3, times = $4, probability = $5 
-            WHERE id = $6`;
+        UPDATE wednesday 
+        SET team = $1, results = $2, odd = $3, times = $4, 
+        WHERE id = $5`;
 
+        // Team 1 - Node will wait for this to finish...
         await db.query(queryText, [
-            req.body.name_team_one, req.body.country_team_one, 
+            req.body.name_team_one, req.body.results-one, 
             req.body.odd_team_one, req.body.time_team_one, 
             req.body.prob_team_one, 1
         ]);
 
      
         await db.query(queryText, [
-            req.body.name_team_two, req.body.country_team_two, 
+            req.body.name_team_two, req.body.results-two, 
             req.body.odd_team_two, req.body.time_team_two, 
             req.body.prob_team_one, 2
         ]);
 
       
         await db.query(queryText, [
-            req.body.name_team_three, req.body.country_team_three, 
+            req.body.name_team_three, req.body.results-three, 
             req.body.odd_team_three, req.body.time_team_three, 
             req.body.prob_team_three, 3
         ]);
 
 
         await db.query(queryText, [
-            req.body.name_team_four, req.body.country_team_four, 
+            req.body.name_team_four, req.body.results-four, 
             req.body.odd_team_four, req.body.time_team_four, 
             req.body.prob_team_four, 4
         ]);
+      
         let sucMessage = "Table uploading was successful."
         res.render("wednesday.ejs",{message:sucMessage});
         
@@ -199,37 +187,38 @@ app.post("/thurday", async (req, res) => {
     try {
         
         const queryText = `
-            UPDATE thurday 
-            SET team = $1, country = $2, odd = $3, times = $4, probability = $5 
-            WHERE id = $6`;
+        UPDATE thurday 
+        SET team = $1, results = $2, odd = $3, times = $4, 
+        WHERE id = $5`;
 
-        
+        // Team 1 - Node will wait for this to finish...
         await db.query(queryText, [
-            req.body.name_team_one, req.body.country_team_one, 
+            req.body.name_team_one, req.body.results-one, 
             req.body.odd_team_one, req.body.time_team_one, 
             req.body.prob_team_one, 1
         ]);
 
      
         await db.query(queryText, [
-            req.body.name_team_two, req.body.country_team_two, 
+            req.body.name_team_two, req.body.results-two, 
             req.body.odd_team_two, req.body.time_team_two, 
             req.body.prob_team_one, 2
         ]);
 
       
         await db.query(queryText, [
-            req.body.name_team_three, req.body.country_team_three, 
+            req.body.name_team_three, req.body.results-three, 
             req.body.odd_team_three, req.body.time_team_three, 
             req.body.prob_team_three, 3
         ]);
 
 
         await db.query(queryText, [
-            req.body.name_team_four, req.body.country_team_four, 
+            req.body.name_team_four, req.body.results-four, 
             req.body.odd_team_four, req.body.time_team_four, 
             req.body.prob_team_four, 4
         ]);
+       
         let sucMessage = "Table uploading was successful."
         res.render("thurday.ejs",{message:sucMessage});
         
@@ -246,37 +235,38 @@ app.post("/friday", async (req, res) => {
     try {
         
         const queryText = `
-            UPDATE friday 
-            SET team = $1, country = $2, odd = $3, times = $4, probability = $5 
-            WHERE id = $6`;
+        UPDATE friday 
+        SET team = $1, results = $2, odd = $3, times = $4, 
+        WHERE id = $5`;
 
-   
+        // Team 1 - Node will wait for this to finish...
         await db.query(queryText, [
-            req.body.name_team_one, req.body.country_team_one, 
+            req.body.name_team_one, req.body.results-one, 
             req.body.odd_team_one, req.body.time_team_one, 
             req.body.prob_team_one, 1
         ]);
 
      
         await db.query(queryText, [
-            req.body.name_team_two, req.body.country_team_two, 
+            req.body.name_team_two, req.body.results-two, 
             req.body.odd_team_two, req.body.time_team_two, 
             req.body.prob_team_one, 2
         ]);
 
       
         await db.query(queryText, [
-            req.body.name_team_three, req.body.country_team_three, 
+            req.body.name_team_three, req.body.results-three, 
             req.body.odd_team_three, req.body.time_team_three, 
             req.body.prob_team_three, 3
         ]);
 
 
         await db.query(queryText, [
-            req.body.name_team_four, req.body.country_team_four, 
+            req.body.name_team_four, req.body.results-four, 
             req.body.odd_team_four, req.body.time_team_four, 
             req.body.prob_team_four, 4
         ]);
+        
         let sucMessage = "Table uploading was successful."
         res.render("friday.ejs",{message:sucMessage});
         
@@ -294,37 +284,38 @@ app.post("/saturday", async (req, res) => {
     try {
         
         const queryText = `
-            UPDATE saturday 
-            SET team = $1, country = $2, odd = $3, times = $4, probability = $5 
-            WHERE id = $6`;
+        UPDATE saturday 
+        SET team = $1, results = $2, odd = $3, times = $4, 
+        WHERE id = $5`;
 
-     
+        // Team 1 - Node will wait for this to finish...
         await db.query(queryText, [
-            req.body.name_team_one, req.body.country_team_one, 
+            req.body.name_team_one, req.body.results-one, 
             req.body.odd_team_one, req.body.time_team_one, 
             req.body.prob_team_one, 1
         ]);
 
      
         await db.query(queryText, [
-            req.body.name_team_two, req.body.country_team_two, 
+            req.body.name_team_two, req.body.results-two, 
             req.body.odd_team_two, req.body.time_team_two, 
             req.body.prob_team_one, 2
         ]);
 
       
         await db.query(queryText, [
-            req.body.name_team_three, req.body.country_team_three, 
+            req.body.name_team_three, req.body.results-three, 
             req.body.odd_team_three, req.body.time_team_three, 
             req.body.prob_team_three, 3
         ]);
 
 
         await db.query(queryText, [
-            req.body.name_team_four, req.body.country_team_four, 
+            req.body.name_team_four, req.body.results-four, 
             req.body.odd_team_four, req.body.time_team_four, 
             req.body.prob_team_four, 4
         ]);
+        
         let sucMessage = "Table uploading was successful."
         res.render("saturday.ejs",{message:sucMessage});
         
@@ -342,36 +333,38 @@ app.post("/sunday", async (req, res) => {
     try {
         
         const queryText = `
-            UPDATE sunday 
-            SET team = $1, country = $2, odd = $3, times = $4, probability = $5 
-            WHERE id = $6`;
+        UPDATE sunday 
+        SET team = $1, results = $2, odd = $3, times = $4, 
+        WHERE id = $5`;
 
+        // Team 1 - Node will wait for this to finish...
         await db.query(queryText, [
-            req.body.name_team_one, req.body.country_team_one, 
+            req.body.name_team_one, req.body.results-one, 
             req.body.odd_team_one, req.body.time_team_one, 
             req.body.prob_team_one, 1
         ]);
 
      
         await db.query(queryText, [
-            req.body.name_team_two, req.body.country_team_two, 
+            req.body.name_team_two, req.body.results-two, 
             req.body.odd_team_two, req.body.time_team_two, 
             req.body.prob_team_one, 2
         ]);
 
       
         await db.query(queryText, [
-            req.body.name_team_three, req.body.country_team_three, 
+            req.body.name_team_three, req.body.results-three, 
             req.body.odd_team_three, req.body.time_team_three, 
             req.body.prob_team_three, 3
         ]);
 
 
         await db.query(queryText, [
-            req.body.name_team_four, req.body.country_team_four, 
+            req.body.name_team_four, req.body.results-four, 
             req.body.odd_team_four, req.body.time_team_four, 
             req.body.prob_team_four, 4
         ]);
+       
         let sucMessage = "Table uploading was successful."
         res.render("sunday.ejs",{message:sucMessage});
         

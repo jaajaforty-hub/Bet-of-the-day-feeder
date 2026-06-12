@@ -4,10 +4,13 @@
 <div class="center-main">
 
     <div class="table">
+        <div class="team_heading">
+            Team Informations
+        </div>
         <% locals.teams.forEach(team => { %>
             <div class="t-teams">
-                <img href=<%= team.logo %>>
-                <div><%= team.name %></div>
+                <img class="logo" src=<%= team.logo %> >
+                <div ><%= team.team_name %></div>
                 <div><%= team.country %></div>
             </div>
         <% }); %>
